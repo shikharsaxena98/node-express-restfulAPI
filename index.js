@@ -40,6 +40,7 @@ app.get('/api/courses/:id', (req, res) => {
     res.send(course);
 });
 
+//updating a course
 app.put('/api/courses/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) return res.status(404).send('The course with the given ID does not exist.');
@@ -50,6 +51,7 @@ app.put('/api/courses/:id', (req, res) => {
     course.name = req.body.name;
 });
 
+//deleting a course
 app.delete('/api/courses/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) return res.status(404).send('The course with the given ID does not exist.');
@@ -65,6 +67,7 @@ app.delete('/api/courses/:id', (req, res) => {
 const port = 3000
 app.listen(port, () => console.log(`listening to port ${port}`));
 
+//validation function
 function validateCourse(course) {
     const schema =
     {
